@@ -75,6 +75,38 @@ function animationLoop(){
  * 
  */
 
+let circles = [];
+
+let circleObj = new CircularObj(200, 150, 20, "#FFC300", "#E6E6FA", drawingBoardA.context);
+drawingBoardA.addObj(circleObj);
+circleObj.animate();
+
+drawingBoardA.canvas.addEventListener('click', function (e) {
+    const mouseX = e.offsetX;
+    const mouseY = e.offsetY;
+    const randomFill = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`;
+    const randomRadius = 5 + Math.random() * 25;
+
+    let newCircle = new CircularObj(mouseX, mouseY, randomRadius, randomFill, "#E6E6FA", drawingBoardA.context);
+    circles.push(newCircle);
+    newCircle.animate();
+});
+
+function displayCircles() {
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].display();
+    }
+    window.requestAnimationFrame(displayCircles);
+}
+
+displayCircles();
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Backspace" && circles.length > 0) {
+        circles.pop();
+    }
+});
+
 
 /** TASK 2:(Drawing Board B) - 
  *  1: Affect the rectangle by input from the microphone somehow, in real time...

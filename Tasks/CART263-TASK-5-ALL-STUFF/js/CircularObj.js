@@ -10,6 +10,8 @@ class CircularObj {
     this.startAngle = 0;
     this.endAngle = Math.PI * 2; //full rotation
     this.context = context;
+    this.aniSpeed = 0.3; //animation speed
+    this.growing = true;
   }
 
   display() {
@@ -30,9 +32,30 @@ class CircularObj {
     this.context.stroke();
   }
 
+
+  animate() {
+
+    console.log("animating");
+
+    if (this.growing === true) {
+      this.radius += this.aniSpeed;
+
+      if (this.radius >= 30) {
+        this.growing = false;
+      }
+
+    } else if (this.growing === false) {
+      this.radius -= this.aniSpeed;
+
+      if (this.radius <= 20) {
+        this.growing = true;
+      }
+    }
+
+    window.requestAnimationFrame(() => this.animate());
+  }
+
   update() {
-    //update circle
-    //this.x += 1;
-    //console.log("circle update");
+    this.display();
   }
 }
