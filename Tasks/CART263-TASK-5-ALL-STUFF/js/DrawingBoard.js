@@ -6,13 +6,31 @@ class DrawingBoard {
     this.objectsOnCanvas = [];
     let self = this;
     this.drawingBoardId = drawingBoardId;
+
+
     //each element has a mouse clicked and a mouse over
     this.canvas.addEventListener("click", function (e) {
       self.clickCanvas(e);
+
+  
+
+      console.log(self.objectsOnCanvas[0])
+      self.objectsOnCanvas[0].changeColor(e);
+      
+      console.log("click")
     });
 
+   
+
     this.canvas.addEventListener("mousemove", function (e) {
-      self.overCanvas(e);
+      
+      // self.overCanvas(e);
+console.log(self.objectsOnCanvas[0])
+self.objectsOnCanvas[0].updatePositionRect(e.clientX, e.clientY);
+
+console.log(e.clientX, e.clientY)
+
+
     });
   }
 
@@ -35,6 +53,7 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
+
    }
   }
 
@@ -58,6 +77,8 @@ class DrawingBoard {
     }
     if(this.drawingBoardId ==="partD"){
       console.log("in D")
+
+
       }
   }
   /* method to add obj to canvas */
