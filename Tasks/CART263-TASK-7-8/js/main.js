@@ -56,6 +56,22 @@ function mapIrisesColors(irisArray) {
 
     console.log("irises with petal length == 4.2", petalLengthFourPointTwo);
 
+    // 8. every: check if all petalWidths are less than 3
+    const allPetalWidthsUnderThree = irisesWithColors.every(
+        function (iris) {
+            return iris.petalWidth < 3;
+    });
+console.log("irises with petal width < 3?", allPetalWidthsUnderThree);
+
+    
+// 9. every: check if all sepalWidths are greater than 1.2
+    const allSepalWidthsAboveOnePointTwo = irisesWithColors.every(
+        function (iris) {
+            return iris.sepalWidth > 1.2;
+    });
+console.log("irises with sepal width > 1.2?", allSepalWidthsAboveOnePointTwo);
+
+
     renderIrisShapes(irisesWithColors);
 }
 
@@ -79,7 +95,7 @@ window.onload = async function () {
 
 
 
-    mapIrisesColors();
+
 
 
 }
